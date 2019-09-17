@@ -1,0 +1,155 @@
+/* You can add global styles to this file, and also import other style files */
+/*@import '~@ngx-share/button/styles/share-buttons';
+@import '~@ngx-share/button/styles/themes/default/default-theme';*/
+
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+    /*padding-top: 3.5rem;*/
+  padding-top: 2.8rem;
+}
+
+/*
+ * Typography
+ */
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+  font-family: 'Aldrich';
+}
+
+nav {
+  font-family: 'Aldrich';
+}
+
+a {
+  color: black;
+}
+a:hover {
+  text-decoration: none;
+}
+
+
+
+
+/*** STYLES FOR PWA ***/
+/* common */
+
+
+.header-block-blue {
+  background: #082e9e;
+  text-align: center
+}
+.header-block-red {
+  background: #bf2b31;
+  text-align: center
+}
+.header-nav-link {
+  font-size:0.9em!important;
+  color: #000000!important;
+  padding-right: 2em!important;
+}
+
+.text-blue {
+  color: #313591;
+  font-size: 4rem;
+}
+.text-red {
+  color: #bf2b31;
+  font-size: 2.5rem;
+}
+
+.section-margin {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.section-margin-top {
+  margin-top: 2rem;
+}
+.section-margin-bottom {
+  margin-bottom: 2rem;
+}
+.bg-black{
+  background-color:#1a1a1a!important
+}
+.block-border-left {
+  border-right: 1px solid #000000;
+}
+
+.block-border-right {
+  border-left: 1px solid #000000;
+}
+
+/* app stores*/
+.banner-appstores{ background-color:#1a1a1a!important; color: white;}
+
+.img-stores {
+  border: 1px solid #747271;
+}
+.text-store-h2 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  font-weight: 800!important;
+}
+
+/* timeline */
+.timeline-left {
+  border-right: 2px solid #b3b3b3;
+}
+
+.timeline-right {
+  border-left: 2px solid #b3b3b3;
+}
+
+.timeline-date {
+  font-size: small;
+  color: #999;
+}
+
+.premium-star {
+  color:#f6c200;
+}
+
+.premium-content-bg {
+  background: white;
+  opacity: 0.3;
+  position: relative;
+  border-color:#f6c200;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.premium-content-message {
+  margin-left:3%;
+  margin-right: 3%;
+  /*background-color: #313591;*/
+  width: 94%;
+  height: 50%;
+  position: absolute;
+  z-index: 10;
+}
+
+
+/*Splash*/
+.content-splah {
+  min-height: 300px;
+  height: 640px !important;
+  width: 480px !important;
+  background-position: center top !important;
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover;
+  background-size: cover !important;
+  object-fit: cover;
+}
+
+.swal2-container {
+  z-index: 2100 !important;
+}

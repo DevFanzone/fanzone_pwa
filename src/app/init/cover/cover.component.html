@@ -1,0 +1,352 @@
+<div *ngIf="isLoader" class="container-loader">
+  <div class="loading-bar">
+    <div class="progress-bar"></div>
+  </div>
+</div>
+
+<section class="visible-in-mobile">
+
+  <!-- info about memberships -->
+  <div class="row">
+    <div class="col-10 mt-1 mx-auto text-center">
+      <h1 class="m-0 p-0" [ngStyle]="{'color': playerSecondaryColor}"><strong>UNIQUE</strong></h1>
+
+      <h1
+        [ngStyle]="{'color': playerPrimaryColor, 'border-bottom-color': playerSecondaryColor, 'border-bottom-width': '2px', 'border-bottom-style': 'solid'}">
+        <strong>CONTENT</strong>
+      </h1>
+      <h5>
+        <small class="p-2 links-account">Se all the exclusive content:</small>
+      </h5>
+      <h5>DOWNLOAD THE APP!</h5>
+    </div>
+  </div>
+  <!-- fin about memberships end -->
+
+  <!-- app download buttons -->
+  <div class="row">
+    <div class="col-10 mt-1 mx-auto text-center">
+      <a href="https://play.google.com/store/apps/details?id=com.titan23" target="_blank">
+        <img src="./assets/images/Badge_Play_Store.png" class="rounded" height="36">
+      </a>
+      <a href="https://apps.apple.com/mx/app/titan23/id1454549170" target="_blank">
+        <img src="./assets/images/Badge_App_Store.png" class="rounded" height="36">
+      </a>
+    </div>
+  </div>
+  <!-- app download buttons end -->
+
+  <div class="row">
+    <div class="col-10 mt-2 mx-auto">
+      <img [src]="assetsDir + 'membership-cover.png' " class="img-fluid">
+
+    </div>
+  </div>
+</section>
+<!-- banners -->
+<section *ngIf="bannersUrls.length > 0" class="visible-in-web" style="height: 20.4vw;max-height: 19.6rem;">
+  <div id="sliders" class="carousel slide h-100" data-ride="carousel">
+    <div class="carousel-inner h-100">
+
+      <ng-container *ngFor="let banner of bannersUrls; let index = index">
+        <div class="{{ (index === 0) ? 'carousel-item active' : 'carousel-item' }} slider-time h-100">
+
+          <img [src]="banner.url" class="img-slider h-100" alt="" [attr.usemap]="'#mapname'+index">
+          <map [attr.name]="'mapname'+index">
+            <area *ngFor="let item of banner.maps;let i = index" shape="rect" coords="{{item.coords[0] + ',' + item.coords[1] + ',' + item.coords[2] + ',' + item.coords[3]}}"
+                  alt="..." [href]="item.link_url" target="_blank">
+          </map>
+
+        </div>
+      </ng-container>
+
+    </div>
+  </div>
+</section>
+<!-- banners end -->
+
+<!-- collections menu -->
+<section class="pt-0  bg-white sticky-top visible-in-web" style="box-shadow: -8px 0px  45px rgba(0, 0, 0, 0.20);">
+  <!-- collections lists begin -->
+  <div class="row" [ngClass]="{'header_nav':true, 'header_nav--big':!isShrunk, 'header_nav--small':isShrunk}"
+       style="margin-left: 0px;margin-right: 0px">
+    <div class="col-12 text-center pb-2" style="height: 20vh;">
+      <a *ngFor="let collection of collections; let index = index"
+         (click)="showCollection(collection.id,collection.nombre,collection.fechaRegistro,collection.urlSplah,collection.lastUpdateSplash)">
+        <img [src]="collection.urlArchivoOriginal" style="cursor: pointer; height: 100%"
+             [ngClass]="{ 'collection-active': collection.cssClass, 'collection-inactive': !collection.cssClass  }">
+      </a>
+      <a [href]="shopifyStore" target="_blank">
+        <img [src]="assetsDir + 'boton-store.png' " style="height: 100%">
+      </a>
+    </div>
+  </div>
+</section>
+<!-- collections menu end -->
+
+<!-- main content -->
+<section class="mt-0 pt-0 visible-in-web">
+  <div class="row" style="margin-left: 0px;margin-right: 0px">
+
+    <div class="col-2 text-center p-5 " style="background-color: #EEECED">
+    </div>
+
+    <div class="col-8">
+      <div class="d-flex flex-row-reverse m-0">
+        <div class="m-0">
+          <a routerLink="exclusiveContent">
+            <img [src]="assetsDir + '/exclusive-content-button.png' " class="img-fluid"
+                 [ngClass]="{'exclusive-content-button-show':!isShrunk, 'exclusive-content-button-hide':isShrunk}"
+                 style="position: relative; top:-21%; z-index:2000">
+          </a>
+        </div>
+      </div>
+
+      <!-- posts lists begin -->
+      <section infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="20" (scrolled)="loadMorePosts()" class="mt-0">
+        <div class="container mt-0 pt-0">
+          <!--Loading text post-->
+          <div class="row" *ngIf="isLoader">
+            LOADING CONTENT... PLEASE WAIT!
+          </div>
+          <div class="row" *ngIf="posts.length <= 0 && !isLoader">
+            NO RECORDS!
+          </div>
+
+          <!--POST ITERATION-->
+          <div class="row align-items-center mb-3 pt-0 mt-0 pb-3" style="margin-left: 0px;margin-right: 0px"
+               *ngFor="let post of posts; let oddV = odd; let evenV = even; let index = index; let first = first;">
+            <!--POST-->
+            <div class="col-lg-8 col-md-10 col-sm-12 mx-auto text-center">
+              <div id="{{'carousel'+index}}" data-interval="false" class="carousel slide" data-ride="carousel"
+                   style="max-width: 750px; margin: 0 auto">
+                <ng-container *ngIf="post.media.length > 1">
+                  <ol class="carousel-indicators">
+                    <li (click)="cdOfVideo()" attr.data-target="{{'#carousel'+index}}" attr.data-slide-to="{{i}}"
+                        class="{{ (i === 0) ? 'active' : 'empty' }}"
+                        *ngFor="let file of post.media; let i = index"></li>
+                  </ol>
+                </ng-container>
+                <div class="carousel-inner">
+                  <ng-container *ngFor="let file of post.media; let mediaIndex = index;">
+                    <ng-container>
+                      <div class="{{ (mediaIndex === 0) ? 'carousel-item active' : 'carousel-item' }}">
+                        <!--<img src="{{file.urlArchivoNormal}}" class="d-block w-100" alt="...">-->
+                        <img
+                          [src]="(post.tipoPost === '1') ? ((memberShip === 'ROLE_DOUBLE') ? file.urlArchivoOriginal : file.urlArchivoDifuminada) : file.urlArchivoOriginal"
+                          *ngIf="(file.tipo.indexOf('image') == 0 && file.mapsNormal.length == 0)"
+                          class="d-block w-100 {{post.tipoPost === '1' ? (memberShip === 'ROLE_DOUBLE') ? '' : 'exclusive-content-blur' : ''}}"
+                          alt="...">
+
+                        <svg *ngIf="file.mapsNormal.length > 0 " version="1.1" xmlns="http://www.w3.org/2000/svg"
+                             style="width: 100%; height: 100%" x="0" y="0"
+                             [attr.viewBox]="'0 0 ' + file.widthNormal + ' ' + file.heightNormal"
+                             preserveAspectRatio="xMidYMid"
+                             (mouseenter)="notifyAboutProduct(post.id, file.mapsNormal, 'max')"
+                             (mouseleave)="notifyAboutProduct(post.id, file.mapsNormal, 'min')">
+                          <image [attr.href]="file.urlArchivoNormal"></image>
+                          <g *ngFor="let product of file.mapsNormal;">
+                            <title>{{ product.description }}</title>
+                            <a [attr.href]="product.link_url" target="_blank">
+                              <circle stroke="#333333" fill="#F6F6F6" fill-opacity="0.5" stroke-opacity="1"
+                                      [attr.cx]="(product.coords[0] + product.coords[2] / 20)"
+                                      [attr.cy]="product.coords[1] + 40" r="30"
+                                      [attr.id]="product.coords[0] + '-' + post.id"/>
+                            </a>
+                          </g>
+                        </svg>
+
+                        <vg-player *ngIf="file.tipo.indexOf('video') == 0" (onPlayerReady)="onPlayerReady($event)"
+                                   (click)="handlePlayers(mediaIndex + '-' + post.id)"
+                                   [id]="mediaIndex + '-' + post.id">
+                          <vg-overlay-play></vg-overlay-play>
+                          <vg-buffering></vg-buffering>
+
+                          <vg-scrub-bar>
+                            <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                            <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+                          </vg-scrub-bar>
+
+                          <video [muted]="videoMute.mute" [vgMedia]="media" #media preload="auto"
+                                 poster="{{file.urlArchivoNormal || ''}}" style="height:100%; max-height:575px;">
+                            <source
+                              [src]="(post.tipoPost === '1') ? ((memberShip === 'ROLE_DOUBLE') ? file.urlArchivoOriginal : file.urlArchivoDifuminada) : file.urlArchivoOriginal"
+                              [type]="file.tipo">
+                          </video>
+
+                          <vg-controls [vgAutohide]="true" [vgAutohideTime]="2">
+                            <vg-play-pause></vg-play-pause>
+
+                            <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+
+                            <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+
+                            <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+
+                            <vg-mute></vg-mute>
+                            <vg-volume></vg-volume>
+
+                            <vg-fullscreen></vg-fullscreen>
+                          </vg-controls>
+                        </vg-player>
+
+                        <vg-player *ngIf="file.tipo.indexOf('audio') == 0">
+                          <audio [vgMedia]="media" #media preload="auto" controls>
+                            <source [src]="file.urlArchivoOriginal" [type]="file.tipo">
+                          </audio>
+                        </vg-player>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </div>
+                <ng-container *ngIf="post.media.length > 1">
+                  <a (click)="cdOfVideo()" class="carousel-control-prev" href="{{'#carousel'+index}}" role="button"
+                     data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a (click)="cdOfVideo()" class="carousel-control-next" href="{{'#carousel'+index}}" role="button"
+                     data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </ng-container>
+              </div>
+              <!--BADGES-->
+              <div class="row col-5 p-0"
+                   style="margin-top:-35px; margin-left:0px; z-index: 2; position: relative;margin-right: 0px">
+                <div class="pull-left box-now right-skew-now" *ngIf="first && post.tipoPost != '4'">NOW</div>
+                <div class="box-prev right-skew-prev" *ngIf="!first && post.tipoPost != '4'">PREVIOUS</div>
+                <div class="box-ad right-skew-ad" *ngIf="post.tipoPost == '4'">SPONSORED</div>
+              </div>
+              <!--ENDBADGES-->
+            </div>
+
+            <!--DESCRIPTION POST-->
+            <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
+              <div>
+                <h4 class="pt-3 pb-0 dont-break-out" style="font-weight:lighter; letter-spacing: 1px; ">
+                  {{post.tituloPost}}</h4>
+
+                <div *ngIf="post.tipoPost !== '4' && post.tipoPost !== 4" class="post-comments-count">
+                  {{ post.fechaRegistro | date: 'medium' }}
+                </div>
+
+                <p class="text-justify pt-1 mb-0 post-text">
+                  {{post.descripcionPost}}
+                </p>
+              </div>
+
+              <div *ngIf="post.tipoPost !== '4' && post.tipoPost !== 4"
+                   class="d-flex flex-row justify-content-center align-items-center" style="z-index:100;">
+                <div class="p-2">
+                  <!-- social buttons begin -->
+                  <div *ngIf="memberShip == 'ROLE_DOUBLE' || memberShip == 'ROLE_SINGLE'; else msgSubscribeSocial ">
+                    <span>{{ post.likesCount }}</span>
+                    <a (click)="createPostLike(post.id)"><i
+                      class="fa fa-heart p-1 post-social-button post-social-button-like"></i></a>
+
+                    <a href="#default" (click)="shareToFB(post.media[0].urlArchivoNormal, post.descripcionPost)"><i
+                      class="fa fa-facebook-square fa-lg post-social-button p-1"
+                      [ngStyle]="{'color': playerSecondaryColor}"></i></a>
+
+                    <a href="#default" (click)="shareToTW(post.descripcionPost)"><i
+                      class="fa fa-twitter-square fa-lg post-social-button p-1"
+                      [ngStyle]="{'color': playerSecondaryColor}"></i></a>
+
+
+                  </div>
+                  <ng-template #msgSubscribeSocial>
+                    <span>{{ post.likesCount }}</span>
+                    <a (click)="createPostLike(post.id)"><i
+                      class="fa fa-heart p-1 post-social-button post-social-button-like"></i></a>
+
+                    <a (click)="inviteUserToLogin()"><i class="fa fa-facebook-square fa-lg post-social-button p-1"
+                                                        [ngStyle]="{'color': playerSecondaryColor}"></i></a>
+                    <a (click)="inviteUserToLogin()"><i class="fa fa-twitter-square fa-lg post-social-button p-1"
+                                                        [ngStyle]="{'color': playerSecondaryColor}"></i></a>
+
+
+                  </ng-template>
+
+
+                  <!-- social buttons end -->
+
+                </div>
+                <div class="p-2">
+                  <img class="pull-left" [src]="assetsDir + 'logo-small.png' " height="45">
+                </div>
+                <div class="p-2">
+                  <p class="post-collection-name">
+                    <a (click)="showCollection(post.idCategoria)" style="cursor: pointer">
+                      {{ post.nombreCategoria }}
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+
+              <div class="row mt-1" *ngIf="post.tipoPost !== '4' && post.tipoPost !== 4">
+                <div class="col-12">
+
+                  <a (click)="getPostComments(post.id)" class="post-comments-count" style="cursor:pointer;">{{
+                      post.commentsCount }}
+                    comment(s) </a>
+
+                  <!-- comment post -->
+                  <span *ngIf="memberShip == 'ROLE_TRIPLE' || memberShip == 'ROLE_DOUBLE'; else msgSubscribeComments ">
+
+                    <form #f="ngForm" (ngSubmit)="createComment(f); f.reset();" class="mb-2">
+                      <input type="text" class="form-control" placeholder="Say something..." required ngModel
+                             name="comment" class="form-control" (click)="setActivePostId(post.id)">
+                    </form>
+                  </span>
+                  <ng-template #msgSubscribeComments>
+
+                    <p class="post-comments-count">To comment, please <a routerLink="/login" class="signup-link">create
+                      a premium account</a>
+                    </p>
+
+                  </ng-template>
+
+                  <!-- comment post end -->
+
+                  <!-- comments list begin -->
+                  <div class="comment m-0 row" *ngFor="let comment of comments">
+                    <div class="row" *ngIf="comment.postId == post.id">
+                      <div class="post-comments-text col-12 mb-0">
+                        <!--<img class="mx-auto rounded-circle img-fluid" src="./assets/images/avatar.png"> -->
+                        <i class="fa fa-user-circle fg-lg"></i>
+                        <strong style="font-size:0.7rem">{{ comment.nombreUsuario }}</strong>
+
+                        <p>
+                          <i style="font-size:0.7rem">{{ comment.fechaRegistro | date: 'medium' }} </i>
+                          {{comment.comentario}}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- comments list end -->
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12 mx-auto mt-3" style="border-bottom: 2px solid #302D7A">
+              </div>
+
+
+            </div>
+            <!--END DESCRIPTION POST-->
+
+          </div>
+          <!--END POST-->
+        </div>
+        <!--END POST ITERATION-->
+      </section>
+      <!-- posts list end -->
+    </div>
+
+    <div class="col-2 text-center p-5" style="background-color: #EEECED">
+
+    </div>
+  </div>
+</section>
+<!-- main content end -->

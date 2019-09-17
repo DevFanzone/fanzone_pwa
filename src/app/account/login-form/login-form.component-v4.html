@@ -1,0 +1,173 @@
+<!-- new template begin -->
+
+<div class="container brand-block">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-5 text-center"
+         [ngStyle]="{'background-color': playerSecondaryColor}">
+      <!-- brand info block begin -->
+      <h1>{{ playerName }}</h1>
+
+      <img [src]="assetsDir + 'app-download.png' " class="img-fluid mt-2 mb-5">
+
+      <h2>Get the app</h2>
+      <!-- bland info block end -->
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 " >
+      <!-- login form block begin -->
+      <div class="mx-auto">
+        <!--
+        <div class="row">
+          <div class="col-md-6 new-user-alert mx-auto">
+            <div *ngIf="brandNew" class="alert alert-success" role="alert">
+              <strong>All set!</strong> Please login with your account
+            </div>
+
+          </div>
+        </div>
+        -->
+
+        <div class="row">
+          <div class="col-md-8 mx-auto">
+            <div class="card">
+              <div class="text-center mt-4 mb-0">
+                <img [src]="assetsDir + 'logo.png' " height="90">
+                <h5 [ngStyle]="{'color': playerPrimaryColor}">
+                  See photos and videos from {{ playerName }}
+                </h5>
+              </div>
+
+              <article class="card-body text-center m-0"
+                       *ngIf="memberShip == 'ROLE_DOUBLE' || memberShip == 'ROLE_SINGLE'; else loginFormTemplate "
+                       [ngStyle]="{'color': playerSecondaryColor}">
+                <hr class="hr-text mb-4 mt-0" data-content="PROFILE INFORMATION">
+                <i class="fa fa-user-circle-o fa-2x"></i>
+
+                <p>
+                  <small>{{ userName }} <br>
+                    <span [ngStyle]="{'color': playerPrimaryColor}">{{ memberShipLabel }}</span>
+                  </small>
+                </p>
+                <a routerLink="/upgrade" *ngIf="memberShip == 'ROLE_SINGLE'"  class="btn btn-dark btn-block btn-sm form-button"
+                  >Upgrade account
+                </a>
+                <a routerLink="/preferences" class="btn btn-dark btn-block btn-sm form-button"
+                  >Preferences
+                </a>
+                <button type="button" (click)="clientLogout()" class="btn btn-block btn-sm form-button"
+                        [ngStyle]="{'background-color': playerSecondaryColor}"
+                  >Log out
+                </button>
+              </article>
+
+
+              <ng-template #loginFormTemplate>
+
+                <article class="card-body text-center pt-1 pb-1">
+
+                  <div *ngIf="!isSocialSigned">
+                    <a *ngIf="!isRequesting" href="javascript:void(0)" (click)="socialSignIn('facebook')"
+                       class="btn btn-block btn-sm form-button" [ngStyle]="{'background-color': playerSecondaryColor}">
+                      <i
+                        class="fa fa-facebook-f float-left mt-1"></i> Log in with
+                      facebook</a>
+
+                    <a *ngIf="!isRequesting" href="javascript:void(0)" (click)="socialSignIn('google')"
+                       class="btn btn-block btn-sm form-button" style="background-color:#F62B00"> <i
+                      class="fa fa-google-plus float-left mt-1"></i> Log in with
+                      Google</a>
+                  </div>
+
+                  <div *ngIf="isSocialSigned">
+                    <hr class="hr-text m-4" data-content="COMPLETE YOUR PROFILE">
+                    <img src="{{user.image}}" class="marginBottom" class="rounded-circle">
+
+                    <form #f="ngForm" novalidate (ngSubmit)="registerUser(f)" class="mt-3">
+                      <div class="form-group input-group-sm">
+                        <input type="text" class="form-control" id="first-name" placeholder="First name"
+                               name="firstName"
+                               ngModel [(ngModel)]="socialData.first_name" readonly>
+                      </div>
+                      <div class="form-group input-group-sm">
+                        <input id="email" type="text" required name="email" validateEmail class="form-control"
+                               placeholder="Email"
+                               ngModel #email="ngModel" [(ngModel)]="socialData.email" readonly>
+
+                      </div>
+                      <div class="form-group input-group-sm">
+                        <select class="form-control" id="plan" required name="plan" ngModel
+                                [(ngModel)]="socialData.plan">
+                          <option value="6">$9.99 Premium membership</option>
+                          <option value="5">$0 Free membership</option>
+
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-block btn-sm form-button"
+                                [ngStyle]="{'background-color': playerSecondaryColor}"
+                                [disabled]="f.invalid || isRequesting">
+                          Sign up
+                        </button>
+                        <a routerLink="/" class="btn btn-block btn-sm btn-danger form-button">Cancel</a>
+
+                        <input type="hidden" class="form-control" id="password" name="password" placeholder="Password"
+                               ngModel [(ngModel)]="socialData.socialId">
+                        <input type="hidden" class="form-control" id="last-name" placeholder="Last name" name="lastName"
+                               ngModel
+                               [(ngModel)]="socialData.first_name">
+                        <small class="terms">By signing up, you agree to our terms, data policy and cookies
+                          policy
+                        </small>
+                        <app-spinner [isRunning]="isRequesting"></app-spinner>
+                      </div>
+                    </form>
+                  </div>
+
+
+                </article>
+              </ng-template>
+
+
+            </div>
+            <!-- card.// -->
+
+
+            <div class="row">
+              <div class="col-md-12 text-center mt-4">
+                <a href="https://play.google.com/store/apps/details?id=com.mlbplayers.yinyanglit" target="_blank">
+                  <img src="./assets/images/Badge_Play_Store.png" class="rounded" height="50">
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.mlbplayers.yinyanglit" target="_blank">
+                  <img src="./assets/images/Badge_App_Store.png" class="rounded" height="50">
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- login form block end -->
+    </div>
+  </div>
+</div>
+<!--<div class="row">
+  <div class="col-md-12 col-sm-12 menu-bottom-block text-center pt-4">
+    <a routerLink="/about-us">About us</a>
+    <a routerLink="/support">Support</a>
+    <a routerLink="/privacy">Privacy</a>
+    <a routerLink="/terms">Terms</a>
+
+  </div>
+
+</div>
+-->
+
+
+<!-- new template end -->
+
+
+
+
+
+

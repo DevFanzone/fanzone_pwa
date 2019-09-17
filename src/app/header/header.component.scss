@@ -1,0 +1,165 @@
+.mask-skew {
+  transform: skewX(-20deg);
+  overflow: hidden;
+ background: #18256B;
+  position: relative;
+  z-index:2000;
+  padding: 0.5rem;
+
+}
+
+.art-skew {
+  transform: skewX(20deg);
+  position: relative;
+}
+
+input {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: small;
+  text-align: center;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-size: small;
+  text-align: center;
+
+}
+:-ms-input-placeholder { /* IE 10+ */
+  font-size: small;
+  text-align: center;
+
+}
+:-moz-placeholder { /* Firefox 18- */
+  font-size: small;
+  text-align: center;
+
+}
+
+.navbar-custom {
+  /*background-color: #EE7202;*/
+  background-color: #e4330a;
+}
+
+.form-control-custom {
+  background: transparent;
+  border-radius: 25px;
+  border: 1px solid white;
+  height: 65%;
+}
+.form-icon-custom {
+  background: transparent;
+  border: 1px solid white;
+  border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+}
+
+.navbar-custom .navbar-brand {
+ cursor: pointer;
+
+}
+.navbar-custom .navbar-nav .nav-item .nav-link {
+  text-transform: uppercase;
+  font-size: .80rem;
+  font-weight: 100;
+}
+
+/* top search box */
+.navbar-form-control {
+  background: #FFFFFF;
+  border-color: #E6E6E6;
+}
+
+.form-inline-custom {
+  display: flex;
+  width: 100%;
+  margin-left: 15%;
+
+}
+
+.form-group-custom {
+  width: 80vw;
+}
+
+.menu-item {
+  display: block;
+
+}
+
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .navbar-form-control {
+    background: #E6E6E6;
+    border-color: red;
+
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .navbar-form-control {
+    background: #FFFFFF;
+    border-color: #E6E6E6;
+    width: 60vw;
+  }
+
+  .form-inline-custom {
+    display: flex;
+    width: 50%;
+
+  }
+
+  .form-group-custom {
+    width: 60vw;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .navbar-form-control {
+    background: #FFFFFF;
+    border-color: #E6E6E6;
+    width: 43%;
+  }
+
+  .form-inline-custom {
+    display: block;
+    width: 43%;
+    margin-left: 0;
+
+  }
+  .form-group-custom {
+    width: 43%;
+  }
+
+  .menu-item {
+    display: none;
+
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .navbar-form-control {
+    background: #FFFFFF;
+    border-color: #E6E6E6;
+    width: 50%;
+  }
+
+  .form-inline-custom {
+    display: block;
+    width: 50%;
+    margin-left: 0;
+
+  }
+  .form-group-custom {
+    width: 50%;
+  }
+  .menu-item {
+    display: none;
+
+  }
+}
+

@@ -1,0 +1,11 @@
+//compile pwa
+ng build --base-href /AGv2/ --env=prod
+ng build --base-href /JTv2/ --env=prod
+ng build --base-href /CB10/ --env=prod
+
+ng build --env=prod
+
+yes | cp -rf /home/danielf/dist/* /usr/share/nginx/html/
+
+
+ngrok http 4200 -host-header="localhost:4200"

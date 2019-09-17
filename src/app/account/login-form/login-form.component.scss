@@ -1,0 +1,111 @@
+/* v4 new styles */
+.links-account {
+  font-size: 0.7rem;
+}
+
+.box-premium {
+  -webkit-box-shadow: 8px 8px 7px 0px rgba(226, 226, 226, 0.6);
+  -moz-box-shadow: 8px 8px 7px 0px rgba(226, 226, 226, 0.6);
+  box-shadow: 8px 8px 7px 0px rgba(226, 226, 226, 0.6);
+}
+
+.box-free {
+  background-color: #F3F3F3;
+}
+
+.terms {
+  font-size: 0.6rem;
+}
+
+/*****/
+
+.brand-block {
+  height: 100vh;
+  height: 100%
+}
+
+.brand-block h1 {
+  color: #FFFFFF;
+  font-size: 3rem;
+}
+
+.brand-block h2 {
+  color: #FFFFFF;
+}
+
+.menu-bottom-block {
+  height: 8vh;
+  background-color: #F2F2F2;
+}
+
+.menu-bottom-block a {
+  font-size: 0.7rem;
+  color: #696969;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  margin-left: 2rem;
+}
+
+.form-button {
+  color: white;
+}
+
+.hr-text {
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: black;
+  text-align: center;
+  height: 1.5em;
+  opacity: .5;
+
+  &:before {
+    content: '';
+    // use the linear-gradient for the fading effect
+    // use a solid background color for a solid bar
+    background: linear-gradient(to right, transparent, #818078, transparent);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+  }
+
+  &:after {
+    content: attr(data-content);
+    position: relative;
+    display: inline-block;
+    color: black;
+
+    padding: 0 .5em;
+    line-height: 1.5em;
+    // this is really the only tricky part, you need to specify the background color of the container element...
+    color: #818078;
+    background-color: #fcfcfa;
+  }
+}
+
+.btn-im-member {
+  font-size: 1.3rem;
+  background-color: #e4330a;
+  color: #FFFFFF !important;
+}
+
+.btn-im-member:hover {
+  background-color: #fff !important;
+
+  border: #e4330a 2px solid;
+  transition: 0.3s;
+
+  .text-hover {
+    color: #e4330a !important;
+  }
+
+}
+
+
+.link {
+  border-bottom: 1px solid #999999;
+}
+

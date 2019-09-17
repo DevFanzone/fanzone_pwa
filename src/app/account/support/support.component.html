@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <section>
+        <!-- text -->
+        <div class="row">
+          <div class="col-12 mt-4 mx-auto text-center">
+            <h3 class="m-0 p-0"
+                [ngStyle]="{'color': playerSecondaryColor, 'border-bottom-color': playerSecondaryColor, 'border-bottom-width': '2px', 'border-bottom-style': 'solid'}">
+              <strong>SUPPORT</strong></h3>
+            <br>
+            <h5>Contact us! We want to hear from you</h5>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6 mx-auto text-center">
+            <form class="form" name="formMessage" (ngSubmit)="submit()">
+              <div class="form-group">
+                <input type="text" placeholder="Name" class="form-control" name="name" [(ngModel)]="message.name">
+              </div>
+              <div class="form-group">
+                <input type="email" placeholder="E-mail" class="form-control" name="email" [(ngModel)]="message.email">
+              </div>
+              <div class="form-group">
+                <textarea placeholder="Issue" class="form-control" rows="5" name="issue" [(ngModel)]="message.issue"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-block" [ngStyle]="{'color': 'white', 'background-color': playerPrimaryColor}">SEND</button>
+
+            </form>
+
+
+          </div>
+        </div>
+
+
+        <!-- text end -->
+
+      </section>
+
+
+    </div>
+  </div>
+</div>
+
+<!-- new template begin -->
+
+
+
+
+
+

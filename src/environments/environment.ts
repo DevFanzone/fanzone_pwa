@@ -1,0 +1,61 @@
+// The file contents for the current environment will overwrite these during build.
+// The build system defaults to the dev environment which uses `environment.ts`, but if you do
+// `ng build --env=prod` then `environment.prod.ts` will be used instead.
+// The list of which env maps to which file can be found in `.angular-cli.json`.
+
+export const environment = {
+  version: 0,
+  production: false,
+  url: 'https://popflyxp.myshopify.com/api/graphql',
+  shopifyaccesstoken: 'f5788e7416e7c162187bc5c623f5475c',
+  callBackFacebook: 'https://99a2030a.ngrok.io/facebook-auth.html',
+  urlAPP: 'http://eltitan23.com/',
+  facebookAppId: '2098414726917851',
+  googleClientId: '808699655217-kdjplb2559dgkgr5uou4cpmafq4bgoar.apps.googleusercontent.com',
+  googleClientSecret: 'KVAlbyleFnuspIX_HUslbESQ',
+  facebookRedirectUri: "https://8680da8e.ngrok.io",
+  //apiURI: 'http://10.0.1.79:8080/api', //Development
+  //apiURI: 'http://35.199.43.24:8080/api/api', //Development
+  apiURI: 'https://api.popflyxp.com:8443/api/api', //Production
+  //apiURI: 'http://localhost:8080/api',
+
+  userAPICM: 'ws@ws.com',
+  passwordAPICM: 'admin',
+
+  shopifyCollections: [],
+
+  //Settings for AG
+  baseRef: '/',
+  atletaId: "3",
+  assetsDir: "./assets/AG/",
+  playerName: "ElTitan23",
+  hashtag: "#eltitan23",
+  facebookPage: "https://www.facebook.com/adrianeltitan23",
+  twitterkPage: "https://twitter.com/adrian_eltitan",
+  instagramPage: "https://www.instagram.com/adrian_eltitan",
+  liveStreamServer: "https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8",
+  shopifyStore: "https://store.popflyxp.com/collections/adrian-gonzalez",
+
+  //css colors
+  playerPrimaryColor: "#e4330a",
+  playerSecondaryColor: "#032a9f",
+
+
+  //Settings for JT
+  /*baseRef: '/',
+    atletaId: "18",
+    assetsDir: "./assets/JT/",
+    playerName: "RedTurn2",
+    hashtag: "#redturn2",
+    facebookPage: "https://www.facebook.com/redturn2/",
+    twitterkPage: "https://www.instagram.com/redturn2/",
+    instagramPage: "https://twitter.com/redturn2",
+    liveStreamServer: "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8",
+    shopifyStore: "https://popflyxp.com/collections/justin-turner",
+
+    //css colors
+    playerPrimaryColor: "#F28920",
+    playerSecondaryColor: "#2E2A7B"*/
+
+
+};
